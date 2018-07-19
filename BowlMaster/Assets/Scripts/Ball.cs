@@ -6,7 +6,7 @@ public class Ball : MonoBehaviour {
 
     // Use this for initialization
     public Vector3 launchSpec;
-    private bool launched;
+    public bool launched;
     private Rigidbody body;
     private AudioSource audioSource;
 	void Start ()

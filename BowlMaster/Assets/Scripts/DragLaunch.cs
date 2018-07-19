@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Ball))]
 public class DragLaunch : MonoBehaviour
 {
+    private GameObject lane;
     private Ball ball;
     private Vector3 start, end;
     private float startTime, endTime;
@@ -11,6 +12,7 @@ public class DragLaunch : MonoBehaviour
 	void Start ()
     {
         ball = this.GetComponent<Ball>();
+        lane = GameObject.Find("Lane");
 	}
 	
     public void DragStart()
@@ -27,12 +29,28 @@ public class DragLaunch : MonoBehaviour
         float resultTime = endTime - startTime;
         Vector3 result = end - start;
         // dived distance by time to get force
-        result.z = result.y / resultTime;
-        result.y = 0f;
+        // and build vector3
+        Vector3 launchVelocity;
+        launchVelocity.z = result.y / resultTime;
+        launchVelocity.x = result.x / resultTime;
+        launchVelocity.y = 0f;
+        
         // fire!!!!
-        ball.Launch(result);
+        ball.Launch(launchVelocity);
 
 
+    }
+
+    public void MoveStart(float xNudge)
+    {
+        if (ball.launched == false)
+        {
+            Vector3 pos = ball.transform.position;
+            pos.x += xNudge;
+            float newX = Mathf.Clamp(pos.x, -50f, 50f);
+            pos.x = newX;
+            ball.transform.position = pos;
+        }
     }
 	// Update is called once per frame
 	void Update ()
