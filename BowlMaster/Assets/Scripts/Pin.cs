@@ -5,11 +5,11 @@ using UnityEngine;
 public class Pin : MonoBehaviour
 {
     public float standingThreshold = 20;
-    private Quaternion rotation;
+    private Vector3 rotation;
 	// Use this for initialization
 	void Start ()
     {
-		
+        IsStanding();
 	}
 	
 	// Update is called once per frame
@@ -19,7 +19,11 @@ public class Pin : MonoBehaviour
 	}
     public bool IsStanding()
     {
-        rotation = this.transform.rotation;
-        return !((rotation.x + 90) > standingThreshold || rotation.z > standingThreshold);
+        rotation = this.transform.rotation.eulerAngles;
+        float tiltX = Mathf.Abs(rotation.x - 270f);
+        float tiltZ = Mathf.Abs(rotation.z);
+        print(tiltX + " " + tiltZ);
+        return (tiltX < standingThreshold && tiltZ < standingThreshold);
     }
 }
+
