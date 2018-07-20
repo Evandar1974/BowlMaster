@@ -4,7 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(Ball))]
 public class DragLaunch : MonoBehaviour
 {
-    private GameObject lane;
+   
     private Ball ball;
     private Vector3 start, end;
     private float startTime, endTime;
@@ -12,7 +12,7 @@ public class DragLaunch : MonoBehaviour
 	void Start ()
     {
         ball = this.GetComponent<Ball>();
-        lane = GameObject.Find("Lane");
+       
 	}
 	
     public void DragStart()
