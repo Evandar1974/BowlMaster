@@ -24,5 +24,12 @@ public class Pin : MonoBehaviour
         float tiltZ = Mathf.Abs(rotation.z);
         return (tiltX < standingThreshold && tiltZ < standingThreshold);
     }
+
+    public void exitArea()
+    {
+        Destroy(this);
+    }
+
+    
 }
 

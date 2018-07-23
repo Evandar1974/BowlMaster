@@ -1339,6 +1339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089597360c03f6e4b9373ab7ccbd8a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  standingDisplay: {fileID: 1506393120}
 --- !u!65 &1109350558
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1411,7 +1412,7 @@ GameObject:
   - component: {fileID: 1506393121}
   - component: {fileID: 1506393120}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Standing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

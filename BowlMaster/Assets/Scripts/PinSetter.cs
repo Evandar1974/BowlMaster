@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class PinSetter : MonoBehaviour {
 
     public Text standingDisplay;
+    private bool ballEnteredBox = false;
  
 	// Use this for initialization
 	void Start ()
@@ -16,7 +17,11 @@ public class PinSetter : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        standingDisplay.text = CountStanding().ToString();
+        if (ballEnteredBox == true)
+        {
+            standingDisplay.color = Color.red;
+            standingDisplay.text = CountStanding().ToString();
+        }
 	}
 
     public int CountStanding()
@@ -31,4 +36,24 @@ public class PinSetter : MonoBehaviour {
         }
         return standing;
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        GameObject thingHit = other.gameObject;
+        if(thingHit.GetComponent<Ball>())
+        {
+            ballEnteredBox = true;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        GameObject thingLeft = other.gameObject;
+        if(thingLeft.GetComponentInParent<Pin>())
+        {
+            Destroy(thingLeft);
+        }
+    }
+
+    
 }
