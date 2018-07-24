@@ -5,7 +5,10 @@ using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
 
+    public int lastStandingCount = -1;
     public Text standingDisplay;
+
+    private float lastChangeTime;
     private bool ballEnteredBox = false;
  
 	// Use this for initialization
@@ -18,11 +21,36 @@ public class PinSetter : MonoBehaviour {
 	void Update ()
     {
         if (ballEnteredBox == true)
-        {
+        {            
             standingDisplay.color = Color.red;
-            standingDisplay.text = CountStanding().ToString();
+            CheckStanding();           
         }
 	}
+
+
+    void CheckStanding()
+    {
+        int currentStanding = CountStanding();
+        // update last standing count
+        if (currentStanding != lastStandingCount)
+        {
+            lastChangeTime = Time.time;
+            lastStandingCount = currentStanding;
+            standingDisplay.text = lastStandingCount.ToString();
+            //calls pins have settiled method
+        }
+        else if(Time.time - 3f > lastChangeTime)
+        {
+            PinsHaveSettled();
+        }
+
+    }
+
+    void PinsHaveSettled()
+    {
+        ballEnteredBox = false;
+        standingDisplay.color = Color.green;       
+    }
 
     public int CountStanding()
     {
@@ -49,11 +77,12 @@ public class PinSetter : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         GameObject thingLeft = other.gameObject;
-        if(thingLeft.GetComponentInParent<Pin>())
+        if(thingLeft.GetComponent<Pin>())
         {
             Destroy(thingLeft);
         }
     }
+
 
     
 }
