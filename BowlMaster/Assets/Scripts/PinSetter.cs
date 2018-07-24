@@ -8,13 +8,14 @@ public class PinSetter : MonoBehaviour {
     public int lastStandingCount = -1;
     public Text standingDisplay;
 
+    private Ball ball;
     private float lastChangeTime;
     private bool ballEnteredBox = false;
  
 	// Use this for initialization
 	void Start ()
     {
-        
+        ball = GameObject.FindObjectOfType<Ball>();
 	}
 	
 	// Update is called once per frame
@@ -49,7 +50,9 @@ public class PinSetter : MonoBehaviour {
     void PinsHaveSettled()
     {
         ballEnteredBox = false;
-        standingDisplay.color = Color.green;       
+        standingDisplay.color = Color.green;
+        lastStandingCount = -1;
+        ball.Reset();
     }
 
     public int CountStanding()
