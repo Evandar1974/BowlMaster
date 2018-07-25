@@ -5,9 +5,11 @@ using UnityEngine;
 public class Ball : MonoBehaviour {
 
     // Use this for initialization
-    private Vector3 startPosition;
+    
     public Vector3 launchSpec;
     public bool launched;
+
+    private Vector3 startPosition;
     private Rigidbody body;
     private AudioSource audioSource;
 	void Start ()
@@ -34,9 +36,8 @@ public class Ball : MonoBehaviour {
 
     public void Reset()
     {
-        Vector3 stoped = new Vector3(0f, 0f, 0f);
-        body.velocity = stoped;
-        body.angularVelocity = stoped;
+        body.velocity = Vector3.zero;
+        body.angularVelocity = Vector3.zero;
         body.freezeRotation = true;
         body.useGravity = false;
         this.transform.position = startPosition;
