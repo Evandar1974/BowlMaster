@@ -7,9 +7,7 @@ public class PinSetter : MonoBehaviour {
 
     public int lastStandingCount = -1;
     public Text standingDisplay;
-    public float distanceToRaise = 40f;
-    
-
+    public GameObject pinSet;
     private Ball ball;
     private float lastChangeTime;
     private bool ballEnteredBox = false;
@@ -18,6 +16,7 @@ public class PinSetter : MonoBehaviour {
 	void Start ()
     {
         ball = GameObject.FindObjectOfType<Ball>();
+     
 	}
 	
 	// Update is called once per frame
@@ -93,11 +92,8 @@ public class PinSetter : MonoBehaviour {
         //raise standing pins only
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
         {
-            if (pin.IsStanding())
-            {
-                pin.GetComponent<Rigidbody>().useGravity = false;
-                pin.transform.Translate(new Vector3(0f, distanceToRaise,0f),Space.World);
-            }
+            pin.Raise();      
+            
         }
     }
 
@@ -105,16 +101,15 @@ public class PinSetter : MonoBehaviour {
     {
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
         {
-            if (pin.IsStanding())
-            {
-                pin.transform.Translate(new Vector3(0f,-distanceToRaise,0f),Space.World);
-                pin.GetComponent<Rigidbody>().useGravity = true;
-            }
+            pin.Lower();            
         }
     }
     
     public void RenewPins()
     {
+        GameObject.Instantiate(pinSet, new Vector3(0f, 0.0f, 18.29f), Quaternion.Euler(0.0f,0.0f,0.0f));
+      
+        
         //renew pins
     }
 }

@@ -31,8 +31,8 @@ public class DragLaunch : MonoBehaviour
         // dived distance by time to get force
         // and build vector3
         Vector3 launchVelocity;
-        launchVelocity.z = result.y / resultTime;
-        launchVelocity.x = result.x / resultTime;
+        launchVelocity.z = (result.y / resultTime)/100;
+        launchVelocity.x = (result.x / resultTime)/100;
         launchVelocity.y = 0f;
         
         // fire!!!!
@@ -47,7 +47,7 @@ public class DragLaunch : MonoBehaviour
         {
             Vector3 pos = ball.transform.position;
             pos.x += xNudge;
-            float newX = Mathf.Clamp(pos.x, -50f, 50f);
+            float newX = Mathf.Clamp(pos.x, -0.50f, 0.50f);
             pos.x = newX;
             ball.transform.position = pos;
         }
