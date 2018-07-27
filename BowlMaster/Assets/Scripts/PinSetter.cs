@@ -91,40 +91,25 @@ public class PinSetter : MonoBehaviour {
     public void RaisePins()
     {
         //raise standing pins only
-        
-        List<Pin> pins = new List<Pin>();
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
         {
             if (pin.IsStanding())
             {
-                pins.Add(pin);
+                pin.GetComponent<Rigidbody>().useGravity = false;
+                pin.transform.Translate(new Vector3(0f, distanceToRaise,0f),Space.World);
             }
-        }
-        foreach(Pin pin in pins)
-        {
-            pin.GetComponent<Rigidbody>().useGravity = false;
-            Vector3 pinPos = pin.transform.position; 
-            pinPos.y += distanceToRaise;
-            pin.transform.position = pinPos;
         }
     }
 
     public void LowerPins()
     {
-        List<Pin> pins = new List<Pin>();
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
         {
             if (pin.IsStanding())
             {
-                pins.Add(pin);
+                pin.transform.Translate(new Vector3(0f,-distanceToRaise,0f),Space.World);
+                pin.GetComponent<Rigidbody>().useGravity = true;
             }
-        }
-        foreach (Pin pin in pins)
-        {
-            Vector3 pinPos = pin.transform.position;
-            pinPos.y -= distanceToRaise;
-            pin.transform.position = pinPos;
-            pin.GetComponent<Rigidbody>().useGravity = true;
         }
     }
     
