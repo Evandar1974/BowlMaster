@@ -15,16 +15,21 @@ public class ActionMaster
         {
             throw new UnityException("Illegal number Of Pins");
         }
-        if(pins == 10)
+        if (pins == 10)
         {
             bowl += 2;
             return Action.EndTurn;
 
         }
-        if(bowl % 2 != 0) 
+        if (bowl % 2 != 0)
         {
             bowl += 1;
             return Action.Tidy;
+        }
+        if (bowl % 2 == 0)
+        {
+            bowl += 1;
+            return Action.EndTurn;
         }
         throw new UnityException("Not sure what to do");
     }

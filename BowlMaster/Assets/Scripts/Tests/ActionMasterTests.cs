@@ -28,6 +28,11 @@ public class ActionMasterTests
     {
         Assert.AreEqual(tidy, actionMaster.Bowl(8));
     }
+    [Test]
+    public void T03TwoBowslReturnsReset()
+    {
+        Assert.AreEqual(endTurn, actionMaster.Bowl(1));
+    }
 
 
 
