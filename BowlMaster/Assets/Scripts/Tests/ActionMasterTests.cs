@@ -10,7 +10,13 @@ public class ActionMasterTests
     private ActionMaster.Action tidy = ActionMaster.Action.Tidy;
     private ActionMaster.Action endGame = ActionMaster.Action.EndGame;
     private ActionMaster.Action reset = ActionMaster.Action.Reset;
-    private ActionMaster actionMaster = new ActionMaster();
+    private ActionMaster actionMaster;
+    [SetUp]
+    public void Setup()
+    {
+        actionMaster = new ActionMaster();
+    }
+
     [Test]
     public void T00PassingTest()
     {
@@ -29,11 +35,15 @@ public class ActionMasterTests
         Assert.AreEqual(tidy, actionMaster.Bowl(8));
     }
     [Test]
-    public void T03TwoBowslReturnsReset()
+    public void T03Bows28SparelReturnsEndTurn()
     {
-        Assert.AreEqual(endTurn, actionMaster.Bowl(1));
+        actionMaster.Bowl(2);
+        Assert.AreEqual(endTurn, actionMaster.Bowl(8));
     }
-
+    [Test]
+    public void T04()
+    {
+    }
 
 
     

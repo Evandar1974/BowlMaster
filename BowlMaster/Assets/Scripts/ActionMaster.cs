@@ -12,22 +12,22 @@ public class ActionMaster
     public Action Bowl(int pins)
     {
         if (pins > 10 || pins < 0)
-        {
+        {//check valid number of pins
             throw new UnityException("Illegal number Of Pins");
         }
         if (pins == 10)
-        {
+        {// strike
             bowl += 2;
             return Action.EndTurn;
 
         }
         if (bowl % 2 != 0)
-        {
+        {// single bowl
             bowl += 1;
             return Action.Tidy;
         }
-        if (bowl % 2 == 0)
-        {
+        else if (bowl % 2 == 0)
+        {//end of frame
             bowl += 1;
             return Action.EndTurn;
         }
