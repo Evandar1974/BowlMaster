@@ -69,6 +69,19 @@ public class PinSetter : MonoBehaviour {
         return standing;
     }
 
+    public int CountFallen()
+    {
+        int fallen = 0;
+        foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
+        {
+            if (! pin.IsStanding())
+            {
+                fallen++;
+            }
+        }
+        return fallen;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         GameObject thingHit = other.gameObject;
