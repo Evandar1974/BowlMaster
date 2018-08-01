@@ -5,17 +5,24 @@ using UnityEngine.UI;
 
 public class PinSetter : MonoBehaviour {
 
-    public int lastStandingCount = -1;
+
+    public int lastStandingCount;
     public Text standingDisplay;
     public GameObject pinSet;
     private Ball ball;
+
+    private Animator animator;
+    private int lastBowlCount = 10;
     private float lastChangeTime;
     private bool ballEnteredBox = false;
+    private ActionMaster actionMaster = new ActionMaster();
  
 	// Use this for initialization
 	void Start ()
     {
         ball = GameObject.FindObjectOfType<Ball>();
+        animator = FindObjectOfType<Animator>();
+      
      
 	}
 	
@@ -50,9 +57,12 @@ public class PinSetter : MonoBehaviour {
 
     void PinsHaveSettled()
     {
+        int score = lastBowlCount - lastStandingCount;
+        lastBowlCount = CountStanding();
         ballEnteredBox = false;
-        standingDisplay.color = Color.green;
+        standingDisplay.color = Color.green;        
         lastStandingCount = -1;
+        ScoreKeeper(score);
         ball.Reset();
     }
 
@@ -69,17 +79,30 @@ public class PinSetter : MonoBehaviour {
         return standing;
     }
 
-    public int CountFallen()
+    private void ScoreKeeper(int score)
     {
-        int fallen = 0;
-        foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
+        ActionMaster.Action action = actionMaster.Bowl(score);
+        if(action == ActionMaster.Action.Tidy)
         {
-            if (! pin.IsStanding())
-            {
-                fallen++;
-            }
+            animator.SetTrigger("Tidy");
         }
-        return fallen;
+        else if(action == ActionMaster.Action.Reset)
+        {
+            animator.SetTrigger("Reset");
+        }
+        else if(action == ActionMaster.Action.EndTurn)
+        {
+            animator.SetTrigger("Reset");
+        }
+        else if(action == ActionMaster.Action.EndGame)
+        {
+            animator.SetTrigger("Reset");
+        }
+        else
+        {
+            Debug.Log("shouldnt get here");
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
