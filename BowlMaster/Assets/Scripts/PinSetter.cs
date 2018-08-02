@@ -89,10 +89,12 @@ public class PinSetter : MonoBehaviour {
         else if(action == ActionMaster.Action.Reset)
         {
             animator.SetTrigger("Reset");
+            lastBowlCount = 10;
         }
         else if(action == ActionMaster.Action.EndTurn)
         {
             animator.SetTrigger("Reset");
+            lastBowlCount = 10;
         }
         else if(action == ActionMaster.Action.EndGame)
         {
