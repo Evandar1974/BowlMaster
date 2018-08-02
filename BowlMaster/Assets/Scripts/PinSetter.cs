@@ -14,7 +14,7 @@ public class PinSetter : MonoBehaviour {
     private Animator animator;
     private int lastBowlCount = 10;
     private float lastChangeTime;
-    private bool ballEnteredBox = false;
+    private bool ballExitBox = false;
     private ActionMaster actionMaster = new ActionMaster();
  
 	// Use this for initialization
@@ -29,7 +29,7 @@ public class PinSetter : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
     {
-        if (ballEnteredBox == true)
+        if (ballExitBox == true)
         {            
             standingDisplay.color = Color.red;
             CheckStanding();           
@@ -59,7 +59,7 @@ public class PinSetter : MonoBehaviour {
     {
         int score = lastBowlCount - lastStandingCount;
         lastBowlCount = CountStanding();
-        ballEnteredBox = false;
+        ballExitBox = false;
         standingDisplay.color = Color.green;        
         lastStandingCount = -1;
         ScoreKeeper(score);
@@ -77,6 +77,11 @@ public class PinSetter : MonoBehaviour {
             }
         }
         return standing;
+    }
+
+    public void GuterBall()
+    {
+        ScoreKeeper(0);
     }
 
     private void ScoreKeeper(int score)
@@ -107,16 +112,10 @@ public class PinSetter : MonoBehaviour {
 
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void SetBallExit()
     {
-        GameObject thingHit = other.gameObject;
-        if(thingHit.GetComponent<Ball>())
-        {
-            ballEnteredBox = true;
-        }
+        ballExitBox = true;
     }
-
-    
 
     public void RaisePins()
     {
