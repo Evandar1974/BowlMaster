@@ -15,10 +15,12 @@ public class PinSetter : MonoBehaviour {
     private int lastBowlCount = 10;
     private float lastChangeTime;
     private bool ballExitBox = false;
+
     private ActionMaster actionMaster = new ActionMaster();
- 
-	// Use this for initialization
-	void Start ()
+
+
+    // Use this for initialization
+    void Start ()
     {
         ball = GameObject.FindObjectOfType<Ball>();
         animator = FindObjectOfType<Animator>();
@@ -86,6 +88,7 @@ public class PinSetter : MonoBehaviour {
 
     private void ScoreKeeper(int score)
     {
+        
         ActionMaster.Action action = actionMaster.Bowl(score);
         if(action == ActionMaster.Action.Tidy)
         {
