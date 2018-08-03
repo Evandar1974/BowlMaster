@@ -5,27 +5,23 @@ using UnityEngine;
 public class ScoreMaster
 {
     private List<int> pinFalls = new List<int>();
-    private List<int> scores = new List<int>();
-	// Use this for initialization
-	void Start ()
+    public List<int> ScoreFrames(List<int> rolls)
     {
-		
-	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
+        List<int> frameList = new List<int>();
 
-    public List<int> updateScores(List<int> pinFall)
-    {
-        foreach (int score in pinFall)
+        foreach (int score in rolls)
         {
-            scores.Add(score);
+            
+            Debug.Log("adding score");
+            frameList.Add(score);
+            Debug.Log(frameList.ToString());
+        }
+        for(int i = 0; i < frameList.Capacity; i++ )
+        {
 
         }
 
-        return scores;
+
+        return frameList;
     }
 }
