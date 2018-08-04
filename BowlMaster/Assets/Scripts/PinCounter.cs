@@ -8,14 +8,16 @@ public class PinCounter : MonoBehaviour {
     public int lastStandingCount;
     public Text standingDisplay;
     public GameObject pinSet;
-    private Ball ball;
 
-    private Animator animator;
+    private GameManager gameManager;
+    private Ball ball;
     private int lastBowlCount = 10;
     private float lastChangeTime;
     private bool ballExitBox = false;
     // Use this for initialization
-    void Start () {
+    void Start ()
+    {
+        gameManager = GameObject.FindObjectOfType<GameManager>();
 		
 	}
 	
@@ -55,7 +57,7 @@ public class PinCounter : MonoBehaviour {
         ballExitBox = false;
         standingDisplay.color = Color.green;
         lastStandingCount = -1;
-        ScoreKeeper(score);
+        gameManager.BowlScore(score);
         ball.Reset();
     }
 
@@ -70,5 +72,9 @@ public class PinCounter : MonoBehaviour {
             }
         }
         return standing;
+    }
+    public void SetBallExit()
+    {
+        ballExitBox = true;
     }
 }

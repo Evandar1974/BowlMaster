@@ -21,4 +21,33 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    public void BowlScore(int score)
+    {
+
+        ActionMaster.Action action = actionMaster.Bowl(score);
+        if (action == ActionMaster.Action.Tidy)
+        {
+            pinSetter.Tidy();
+        }
+        else if (action == ActionMaster.Action.Reset)
+        {
+            pinSetter.Reset(); 
+            //lastBowlCount = 10;
+        }
+        else if (action == ActionMaster.Action.EndTurn)
+        {
+            pinSetter.Reset();
+            //lastBowlCount = 10;
+        }
+        else if (action == ActionMaster.Action.EndGame)
+        {
+            pinSetter.Reset();
+        }
+        else
+        {
+            Debug.Log("shouldnt get here");
+        }
+
+    }
 }

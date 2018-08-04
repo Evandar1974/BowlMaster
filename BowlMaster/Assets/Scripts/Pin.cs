@@ -14,12 +14,7 @@ public class Pin : MonoBehaviour
     {
         body = this.GetComponent<Rigidbody>();
 	}
-	
-	// Update is called once per frame
-	void Update ()
-    {
-		
-	}
+
     public bool IsStanding()
     {
         rotation = this.transform.rotation.eulerAngles;
@@ -28,7 +23,7 @@ public class Pin : MonoBehaviour
         return (tiltX < standingThreshold && tiltZ < standingThreshold);
     }
 
-    public void exitArea()
+    public void ExitArea()
     {
         Destroy(this);
     }
@@ -46,16 +41,12 @@ public class Pin : MonoBehaviour
     public void Lower()
     {
         Gravity(true);
-        this.transform.Translate(new Vector3(0f, -distanceToRaise, 0f), Space.World);
-       
- 
+        this.transform.Translate(new Vector3(0f, -distanceToRaise, 0f), Space.World); 
     }
 
     public void Gravity(bool b)
     {
         body.useGravity = b;
-    }
-
-    
+    }    
 }
 
