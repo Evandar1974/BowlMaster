@@ -14,11 +14,15 @@ public class ScoreMaster
             
             Debug.Log("adding score");
             frameList.Add(score);
-            Debug.Log(frameList.ToString());
+            
         }
         for(int i = 0; i < frameList.Capacity; i++ )
         {
-
+            if(i+1 % 2 == 0)
+            {
+                int scoreOne = frameList[i - 1];
+                int scoreTwo = frameList[i];
+            }
         }
 
 
