@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GutterBall : MonoBehaviour {
+public class LeftLane : MonoBehaviour {
 
-    private PinSetter setter;
+    private PinCounter counter;
     private Ball ball;	// Use this for initialization
 	void Start ()
     {
-        setter = GameObject.FindObjectOfType<PinSetter>();
+        counter = GameObject.FindObjectOfType<PinCounter>();
      
 	}
 	
@@ -21,7 +21,7 @@ public class GutterBall : MonoBehaviour {
     {
         if(other.gameObject.name == "Ball")
         {
-           setter.SetBallExit();
+           counter.SetBallExit();
         }
     }
 }

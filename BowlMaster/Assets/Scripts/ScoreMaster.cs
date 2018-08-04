@@ -4,28 +4,23 @@ using UnityEngine;
 
 public class ScoreMaster
 {
-    private List<int> pinFalls = new List<int>();
     public List<int> ScoreFrames(List<int> rolls)
     {
         List<int> frameList = new List<int>();
 
         foreach (int score in rolls)
         {
-            
-            Debug.Log("adding score");
-            frameList.Add(score);
-            
-        }
-        for(int i = 0; i < frameList.Capacity; i++ )
-        {
-            if(i+1 % 2 == 0)
-            {
-                int scoreOne = frameList[i - 1];
-                int scoreTwo = frameList[i];
-            }
+            //if 1 bowl sent return empty list
+            //if 2 bowls no spare return frame score
+            //if spare see if 1 more bowl to add to score
+            //if strike see if 2 more bowls then add to score
+
+         
+
+       
         }
 
-
+        //return list of framescores
         return frameList;
     }
 }

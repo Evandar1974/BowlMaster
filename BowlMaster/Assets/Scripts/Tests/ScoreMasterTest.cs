@@ -21,7 +21,6 @@ public class ScoreMasterTest
     public void T01OnePinCountReturnsOneScore()
     {
         pinDrops.Add(1);
-        results.Add(1);
         Assert.AreEqual(results, scoreMaster.ScoreFrames(pinDrops));
     }
     [Test]
@@ -29,8 +28,6 @@ public class ScoreMasterTest
     {
         pinDrops.Add(4);
         pinDrops.Add(5);
-        results.Add(4);
-        results.Add(5);
         results.Add(9);
         Assert.AreEqual(results, scoreMaster.ScoreFrames(pinDrops));
     }
