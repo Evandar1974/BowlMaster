@@ -534,6 +534,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 286624283}
+  - component: {fileID: 286624284}
   m_Layer: 0
   m_Name: Lane
   m_TagString: Untagged
@@ -553,9 +554,24 @@ Transform:
   m_Children:
   - {fileID: 600306262}
   - {fileID: 170076735}
+  - {fileID: 938492472}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &286624284
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 286624282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d7455ac0958d9b41815bab21e21d310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lastStandingCount: 0
+  standingDisplay: {fileID: 0}
+  pinSet: {fileID: 0}
 --- !u!1 &314645602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1356,6 +1372,67 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 199899daaf959bb4080a79274bc665b1, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &938492471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 938492472}
+  - component: {fileID: 938492475}
+  - component: {fileID: 938492474}
+  - component: {fileID: 938492473}
+  m_Layer: 0
+  m_Name: Lane Box
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &938492472
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 938492471}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 9}
+  m_LocalScale: {x: 1.2, y: 2, z: 18}
+  m_Children: []
+  m_Father: {fileID: 286624283}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &938492473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 938492471}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebc9ed3b90ae2214db857428f250c171, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!65 &938492474
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 938492471}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!33 &938492475
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 938492471}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1109350555
 GameObject:
   m_ObjectHideFlags: 0
@@ -1401,8 +1478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 089597360c03f6e4b9373ab7ccbd8a65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lastStandingCount: -1
-  standingDisplay: {fileID: 1506393120}
   pinSet: {fileID: 1876961753918950, guid: 01837b0255b999b4bab6a810d93d969f, type: 2}
 --- !u!65 &1109350558
 BoxCollider:
@@ -1931,6 +2006,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd7a42c1127ad049b3398057e0f357f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Ball: {fileID: 462974287}
+  pinSetter: {fileID: 1109350557}
+  pinCounter: {fileID: 286624284}
+  scoreDisplay: {fileID: 0}
 --- !u!4 &1838688774
 Transform:
   m_ObjectHideFlags: 0

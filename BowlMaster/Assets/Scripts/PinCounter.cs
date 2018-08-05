@@ -17,8 +17,7 @@ public class PinCounter : MonoBehaviour {
     // Use this for initialization
     void Start ()
     {
-        gameManager = GameObject.FindObjectOfType<GameManager>();
-		
+        gameManager = GameObject.FindObjectOfType<GameManager>();		
 	}
 	
     // Update is called once per frame
@@ -58,7 +57,7 @@ public class PinCounter : MonoBehaviour {
         standingDisplay.color = Color.green;
         lastStandingCount = -1;
         gameManager.BowlScore(score);
-        ball.Reset();
+        
     }
 
     public int CountStanding()
@@ -76,5 +75,9 @@ public class PinCounter : MonoBehaviour {
     public void SetBallExit()
     {
         ballExitBox = true;
+    }
+    public void ResetCount()
+    {
+        lastBowlCount = 10;
     }
 }

@@ -8,8 +8,7 @@ public class LeftLane : MonoBehaviour {
     private Ball ball;	// Use this for initialization
 	void Start ()
     {
-        counter = GameObject.FindObjectOfType<PinCounter>();
-     
+        counter = GameObject.FindObjectOfType<PinCounter>();     
 	}
 	
 	// Update is called once per frame
