@@ -10,7 +10,6 @@ public class PinCounter : MonoBehaviour {
     public GameObject pinSet;
 
     private GameManager gameManager;
-    private Ball ball;
     private int lastBowlCount = 10;
     private float lastChangeTime;
     private bool ballExitBox = false;
