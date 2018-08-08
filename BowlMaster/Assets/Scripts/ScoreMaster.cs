@@ -13,13 +13,44 @@ public class ScoreMaster
         int second = 0;
         int third = 0;
         int fourth = 0;
+        int fifth = 0;
 
-        first = rolls[1];
+        first = rolls[0];
+        total += first;
         if (first == 10)
         {
             total += first;
-            third = rolls[3];
+            third = rolls[2];
+            total += third;
             if(third == 10)
+            {
+                fifth = rolls[4];
+                total += fifth;
+                frameList.Add(total);
+            }
+            else
+            {
+                fourth = rolls[3];
+                total += fourth;
+                frameList.Add(total);
+            }
+            frameIndex++;
+        }
+        else
+        {
+            second = rolls[1];
+            total += second;
+            if (first + second == 10)
+            {
+                third = rolls[3];
+                total += third;
+                frameList.Add(total);
+            }
+            else
+            {
+                frameList.Add(total);
+            }
+            frameIndex++;
         }
         
            
