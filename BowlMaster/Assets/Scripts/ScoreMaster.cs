@@ -8,42 +8,43 @@ public class ScoreMaster
     {
         List<int> frameList = new List<int>();
         int total=0;
-        float frameIndex = 1f;
-        int first =0;
-        int second = 0;
-        int third = 0;
-        int fourth = 0;
-        int fifth = 0;
+        int frameIndex = 1;
+        int bowlIndex; = frameIndex -1;
+        int firstBowl =0;
+        int secondBowl = 0;
+        int thirdBowl = 0;
+        int fourthBowl = 0;
+        int fifthBowl = 0;
 
-        first = rolls[0];
-        total += first;
-        if (first == 10)
+        bowlIndex = frameIndex * 2 - 2;
+        firstBowl = rolls[bowlIndex];
+        total += firstBowl;
+        if (firstBowl == 10)
         {
-            total += first;
-            third = rolls[2];
-            total += third;
-            if(third == 10)
+            thirdBowl = rolls[bowlIndex + 2];
+            total += thirdBowl;
+            if(thirdBowl == 10)
             {
-                fifth = rolls[4];
-                total += fifth;
+                fifthBowl = rolls[bowlIndex + 4];
+                total += fifthBowl;
                 frameList.Add(total);
             }
             else
             {
-                fourth = rolls[3];
-                total += fourth;
+                fourthBowl = rolls[bowlIndex+3];
+                total += fourthBowl;
                 frameList.Add(total);
             }
             frameIndex++;
         }
         else
         {
-            second = rolls[1];
-            total += second;
-            if (first + second == 10)
+            secondBowl = rolls[bowlIndex+1];
+            total += secondBowl;
+            if (firstBowl + secondBowl == 10)
             {
-                third = rolls[3];
-                total += third;
+                thirdBowl = rolls[bowlIndex + 2];
+                total += thirdBowl;
                 frameList.Add(total);
             }
             else
