@@ -9,65 +9,76 @@ public class ScoreMaster
         List<int> frameList = new List<int>();
         int total=0;
         int frameIndex = 1;
-        int bowlIndex; = frameIndex -1;
+        int bowlIndex = 0;
         int firstBowl =0;
         int secondBowl = 0;
         int thirdBowl = 0;
         int fourthBowl = 0;
         int fifthBowl = 0;
 
-        bowlIndex = frameIndex * 2 - 2;
-        firstBowl = rolls[bowlIndex];
-        total += firstBowl;
-        if (firstBowl == 10)
+        
+       
+        for (int i = 0; i < rolls.Count; i += 2)
         {
-            thirdBowl = rolls[bowlIndex + 2];
-            total += thirdBowl;
-            if(thirdBowl == 10)
+            total = 0;
+            bowlIndex = frameIndex * 2 - 2;
+            firstBowl = rolls[bowlIndex];
+            total += firstBowl;
+            if(frameIndex == 10)
             {
-                fifthBowl = rolls[bowlIndex + 4];
-                total += fifthBowl;
-                frameList.Add(total);
+                if(firstBowl == 10 && rolls.Count >=2)
+                {
+                    secondBowl = rolls[bowlIndex + 1];
+                    total += secondBowl;
+                    if(rolls.Count >=3)
+                    {
+                        thirdBowl = rolls[bowlIndex + 2];
+                        total += thirdBowl;
+                        frameList.Add(total);
+                    }
+                }
+                else
+                {
+
+                }
             }
-            else
-            {
-                fourthBowl = rolls[bowlIndex+3];
-                total += fourthBowl;
-                frameList.Add(total);
-            }
-            frameIndex++;
-        }
-        else
-        {
-            secondBowl = rolls[bowlIndex+1];
-            total += secondBowl;
-            if (firstBowl + secondBowl == 10)
+            else if (firstBowl == 10 && rolls.Count >= 3)
             {
                 thirdBowl = rolls[bowlIndex + 2];
                 total += thirdBowl;
-                frameList.Add(total);
+                if (thirdBowl == 10 && rolls.Count >= 5)
+                {
+                    fifthBowl = rolls[bowlIndex + 4];
+                    total += fifthBowl;
+                    frameList.Add(total);
+                }
+                else if (rolls.Count >= 4)
+                {
+                    fourthBowl = rolls[bowlIndex + 3];
+                    total += fourthBowl;
+                    frameList.Add(total);
+                }
+                frameIndex++;
             }
-            else
+            else if (rolls.Count >= 2)
             {
-                frameList.Add(total);
+                secondBowl = rolls[bowlIndex + 1];
+                total += secondBowl;
+                if (firstBowl + secondBowl == 10 && rolls.Count >= 3)
+                {
+                    thirdBowl = rolls[bowlIndex + 2];
+                    total += thirdBowl;
+                    frameList.Add(total);
+                }
+                else
+                {
+                    frameList.Add(total);
+                }
+                frameIndex++;
             }
-            frameIndex++;
         }
         
-           
-
-            //if 1 bowl sent return empty list
-            //if 2 bowls no spare return frame score
-            //if spare see if 1 more bowl to add to score
-            //if strike see if 2 more bowls then add to score
-            frameList.Add(total);
-            
-
-         
-
-       
         
-
         //return list of framescores
         return frameList;
     }
