@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour {
     public PinSetter pinSetter;
     public PinCounter pinCounter;
     public ScoreDisplay scoreDisplay;
-    private ActionMaster actionMaster = new ActionMaster();
-    private ScoreMaster scoreMaster = new ScoreMaster();
+    private static ActionMaster actionMaster = new ActionMaster();
+    private static ScoreMaster scoreMaster = new ScoreMaster();
 
     private List<int> bowlScores = new List<int>();
     private List<int> frameScores = new List<int>();

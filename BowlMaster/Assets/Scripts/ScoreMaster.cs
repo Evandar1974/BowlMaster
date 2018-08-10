@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreMaster
 {
-    public static List<int> ScoreFrames(List<int> rolls)
+    public List<int> ScoreFrames(List<int> rolls)
     {
         List<int> frameList = new List<int>();
         int total=0;
@@ -37,8 +37,20 @@ public class ScoreMaster
                         frameList.Add(total);
                     }
                 }
-                else
+                else if(rolls.Count >=2)
                 {
+                    secondBowl = rolls[bowlIndex + 1];
+                    total += secondBowl;
+                    if(firstBowl + secondBowl == 10 && rolls.Count >=3)
+                    {
+                        thirdBowl = rolls[bowlIndex + 2];
+                        total += thirdBowl;
+                        frameList.Add(total);
+                    }
+                    else
+                    {
+                        frameList.Add(total);
+                    }
 
                 }
             }
