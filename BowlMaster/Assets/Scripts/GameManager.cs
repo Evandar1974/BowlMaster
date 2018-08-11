@@ -28,6 +28,10 @@ public class GameManager : MonoBehaviour {
     {
         //add score to players bowl scores list
         bowlScores.Add(score);
+        if (score == 10)
+        { bowlScores.Add(0); }
+            
+        
         //determine pinSetter action by sending score to actionMaster
         ActionMaster.Action action = actionMaster.Bowl(score);
         if (action == ActionMaster.Action.Tidy)
@@ -70,7 +74,7 @@ public class GameManager : MonoBehaviour {
         }
 
         //pass bowl scores to scoreMaster to get Frame scores
-        scoreMaster.ScoreFrames(bowlScores);
+        frameScores = scoreMaster.ScoreFrames(bowlScores);
         //pass bowl and fram scores to scoreboard to display scores
         scoreDisplay.DisplayScores(bowlScores, frameScores);
 

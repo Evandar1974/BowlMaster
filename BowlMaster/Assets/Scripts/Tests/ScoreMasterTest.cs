@@ -31,5 +31,27 @@ public class ScoreMasterTest
         results.Add(9);
         Assert.AreEqual(results, scoreMaster.ScoreFrames(pinDrops));
     }
+    [Test]
+    public void T03SingleStrikeReturnsNoScore()
+    {
+        pinDrops.Add(10);
+        Assert.AreEqual(results, scoreMaster.ScoreFrames(pinDrops));
+    }
+    [Test]
+    public void T04TwoStrikesReturnsNoScore()
+    {
+        pinDrops.Add(10);
+        pinDrops.Add(10);
+        Assert.AreEqual(results, scoreMaster.ScoreFrames(pinDrops));
+    }
+    [Test]
+    public void T05ThreeStrikesReturnsOneFrameScore()
+    {
+        pinDrops.Add(10);
+        pinDrops.Add(10);
+        pinDrops.Add(10);
+        results.Add(30);
+        Assert.AreEqual(results, scoreMaster.ScoreFrames(pinDrops));
+    }
 
 }
