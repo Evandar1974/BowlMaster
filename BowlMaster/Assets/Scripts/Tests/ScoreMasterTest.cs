@@ -56,8 +56,8 @@ public class ScoreMasterTest
     [Test]
     public void T06FourBallsNoStrikesTwoResults()
     {
-        int[] balls = [3, 5, 6, 2];
-        int[] frames = [8, 8];
+        int[] balls = { 3, 5, 6, 2 };
+        int[] frames = { 8, 8 };
         foreach(int i in balls)
         {
             pinDrops.Add(i);
@@ -73,8 +73,8 @@ public class ScoreMasterTest
     [Test]
     public void T07FullGameNoStrikesOrSpares()
     {
-        int[] balls = [3, 5, 6, 2, 5, 3, 6, 1, 8, 0, 7, 2, 6, 3, 3, 5, 4, 5, 4, 5];
-        int[] frames = [8, 8, 8, 7, 8, 9, 9, 8, 9, 9];
+        int[] balls = { 3, 5, 6, 2, 5, 3, 6, 1, 8, 0, 7, 2, 6, 3, 3, 5, 4, 5, 4, 5 };
+        int[] frames = { 8, 8, 8, 7, 8, 9, 9, 8, 9, 9 };
         foreach (int i in balls)
         {
             pinDrops.Add(i);
@@ -88,10 +88,10 @@ public class ScoreMasterTest
 
     }
     [Test]
-    public void T08FourBallsNoStrikesTwoResults()
+    public void T08PerfectGame()
     {
-        int[] balls = [3, 5, 6, 2];
-        int[] frames = [8, 8];
+        int[] balls = { 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10 };
+        int[] frames = { 30, 30, 30, 30, 30, 30, 30, 30, 30, 30 };
         foreach (int i in balls)
         {
             pinDrops.Add(i);
@@ -105,10 +105,10 @@ public class ScoreMasterTest
 
     }
     [Test]
-    public void T09FourBallsNoStrikesTwoResults()
+    public void T09AlternatingStrikesAndSpares()
     {
-        int[] balls = [3, 5, 6, 2];
-        int[] frames = [8, 8];
+        int[] balls = { 10, 6, 4, 10, 5, 5, 10, 3, 7, 10, 8, 2, 10, 4, 6, 10 };
+        int[] frames = { 20, 20, 20, 20, 20, 20, 20, 20, 20, 20 };
         foreach (int i in balls)
         {
             pinDrops.Add(i);
@@ -122,10 +122,10 @@ public class ScoreMasterTest
 
     }
     [Test]
-    public void T10FourBallsNoStrikesTwoResults()
+    public void T10AllSpares()
     {
-        int[] balls = [3, 5, 6, 2];
-        int[] frames = [8, 8];
+        int[] balls = { 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5 };
+        int[] frames = { 15, 15, 15, 15, 15, 15, 15, 15, 15, 15 };
         foreach (int i in balls)
         {
             pinDrops.Add(i);
@@ -139,10 +139,10 @@ public class ScoreMasterTest
 
     }
     [Test]
-    public void T11FourBallsNoStrikesTwoResults()
+    public void T11NoLastBall()
     {
-        int[] balls = [3, 5, 6, 2];
-        int[] frames = [8, 8];
+        int[] balls = { 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4 };
+        int[] frames = { 8, 8, 8, 8, 8, 8, 8, 8, 8, 8 };
         foreach (int i in balls)
         {
             pinDrops.Add(i);

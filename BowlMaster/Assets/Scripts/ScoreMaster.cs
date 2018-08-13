@@ -13,80 +13,39 @@ public class ScoreMaster
         int firstBowl =0;
         int secondBowl = 0;
         int thirdBowl = 0;
-        int fourthBowl = 0;
-        int fifthBowl = 0;
-
-        
-       
-        for (int i = 0; i < rolls.Count; i += 2)
+        while (frameIndex < 11 || rolls.Count > bowlIndex)
         {
             total = 0;
-            bowlIndex = frameIndex * 2 - 2;
             firstBowl = rolls[bowlIndex];
             total += firstBowl;
-            if(frameIndex == 10)
+            if (firstBowl == 10 && rolls.Count >= 3 + bowlIndex )
             {
-                if(firstBowl == 10 && rolls.Count >=2)
-                {
-                    secondBowl = rolls[bowlIndex + 1];
-                    total += secondBowl;
-                    if(rolls.Count >=3)
-                    {
-                        thirdBowl = rolls[bowlIndex + 2];
-                        total += thirdBowl;
-                        frameList.Add(total);
-                    }
-                }
-                else if(rolls.Count >=2)
-                {
-                    secondBowl = rolls[bowlIndex + 1];
-                    total += secondBowl;
-                    if(firstBowl + secondBowl == 10 && rolls.Count >=3)
-                    {
-                        thirdBowl = rolls[bowlIndex + 2];
-                        total += thirdBowl;
-                        frameList.Add(total);
-                    }
-                    else
-                    {
-                        frameList.Add(total);
-                    }
-
-                }
-            }
-            else if (firstBowl == 10 && rolls.Count >= 3)
-            {
+                secondBowl = rolls[bowlIndex + 1];
                 thirdBowl = rolls[bowlIndex + 2];
+                total += secondBowl;
                 total += thirdBowl;
-                if (thirdBowl == 10 && rolls.Count >= 5)
-                {
-                    fifthBowl = rolls[bowlIndex + 4];
-                    total += fifthBowl;
-                    frameList.Add(total);
-                }
-                else if (rolls.Count >= 4)
-                {
-                    fourthBowl = rolls[bowlIndex + 3];
-                    total += fourthBowl;
-                    frameList.Add(total);
-                }
+                frameList.Add(total);
                 frameIndex++;
+                bowlIndex += 1;                
             }
-            else if (rolls.Count >= 2)
+            else if (rolls.Count >= 2 + bowlIndex)
             {
                 secondBowl = rolls[bowlIndex + 1];
                 total += secondBowl;
-                if (firstBowl + secondBowl == 10 && rolls.Count >= 3)
+                if (firstBowl + secondBowl == 10 && rolls.Count >= 3 + bowlIndex)
                 {
                     thirdBowl = rolls[bowlIndex + 2];
                     total += thirdBowl;
                     frameList.Add(total);
+                    frameIndex++;
+                    bowlIndex += 2;
                 }
                 else
                 {
                     frameList.Add(total);
-                }
-                frameIndex++;
+                    frameIndex++;
+                    bowlIndex += 2;
+                }                
             }
         }
         

@@ -28,10 +28,6 @@ public class GameManager : MonoBehaviour {
     {
         //add score to players bowl scores list
         bowlScores.Add(score);
-        if (score == 10)
-        { bowlScores.Add(0); }
-            
-        
         //determine pinSetter action by sending score to actionMaster
         ActionMaster.Action action = actionMaster.Bowl(score);
         if (action == ActionMaster.Action.Tidy)
