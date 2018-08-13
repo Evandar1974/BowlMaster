@@ -8,21 +8,12 @@ public class GameManager : MonoBehaviour {
     public PinSetter pinSetter;
     public PinCounter pinCounter;
     public ScoreDisplay scoreDisplay;
+
     private static ActionMaster actionMaster = new ActionMaster();
     private static ScoreMaster scoreMaster = new ScoreMaster();
 
     private List<int> bowlScores = new List<int>();
     private List<int> frameScores = new List<int>();
-
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void BowlScore(int score)
     {

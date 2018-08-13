@@ -36,6 +36,7 @@ public class Ball : MonoBehaviour {
 
     public void Reset()
     {
+        body.rotation = Quaternion.identity;
         body.velocity = Vector3.zero;
         body.angularVelocity = Vector3.zero;
         body.freezeRotation = true;

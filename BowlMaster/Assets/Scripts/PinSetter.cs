@@ -39,7 +39,8 @@ public class PinSetter : MonoBehaviour
     {
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
         {
-            pin.Lower();            
+            pin.Lower();
+            pin.GetComponent<Rigidbody>().transform.rotation = Quaternion.Euler(270f, 0f, 0f);
         }
     }
     
