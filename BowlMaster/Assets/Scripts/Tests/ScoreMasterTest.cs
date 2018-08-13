@@ -24,7 +24,7 @@ public class ScoreMasterTest
         Assert.AreEqual(results, scoreMaster.ScoreFrames(pinDrops));
     }
     [Test]
-    public void T02TwoPinCountNoSpareReturnsthreeNumbers()
+    public void T02TwoPinCountNoSpareReturnsOneScore()
     {
         pinDrops.Add(4);
         pinDrops.Add(5);
