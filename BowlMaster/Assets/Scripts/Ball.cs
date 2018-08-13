@@ -39,10 +39,8 @@ public class Ball : MonoBehaviour {
         body.rotation = Quaternion.identity;
         body.velocity = Vector3.zero;
         body.angularVelocity = Vector3.zero;
-        body.freezeRotation = true;
         body.useGravity = false;
         this.transform.position = startPosition;
-        body.freezeRotation = false;
         launched = false;
     }
 

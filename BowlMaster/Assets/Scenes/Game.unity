@@ -205,7 +205,7 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: 5
+            m_FloatArgument: 0.05
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -570,8 +570,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastStandingCount: 0
-  standingDisplay: {fileID: 0}
-  pinSet: {fileID: 0}
+  standingDisplay: {fileID: 1506393120}
+  pinSet: {fileID: 1876961753918950, guid: 01837b0255b999b4bab6a810d93d969f, type: 2}
 --- !u!1 &314645602
 GameObject:
   m_ObjectHideFlags: 0
@@ -1176,7 +1176,7 @@ MonoBehaviour:
             m_ObjectArgument: {fileID: 0}
             m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
             m_IntArgument: 0
-            m_FloatArgument: -5
+            m_FloatArgument: -0.05
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
@@ -1363,11 +1363,6 @@ Prefab:
     - target: {fileID: 4458908354347676, guid: 199899daaf959bb4080a79274bc665b1, type: 2}
       propertyPath: m_RootOrder
       value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 135628240543470320, guid: 199899daaf959bb4080a79274bc665b1,
-        type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 199899daaf959bb4080a79274bc665b1, type: 2}
@@ -2006,7 +2001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8fd7a42c1127ad049b3398057e0f357f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Ball: {fileID: 462974287}
+  ball: {fileID: 462974287}
   pinSetter: {fileID: 1109350557}
   pinCounter: {fileID: 286624284}
   scoreDisplay: {fileID: 0}

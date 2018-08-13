@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour {
     public PinSetter pinSetter;
     public PinCounter pinCounter;
     public ScoreDisplay scoreDisplay;
-
-    private static ActionMaster actionMaster = new ActionMaster();
     private static ScoreMaster scoreMaster = new ScoreMaster();
 
     private List<int> bowlScores = new List<int>();
@@ -20,14 +18,13 @@ public class GameManager : MonoBehaviour {
         //add score to players bowl scores list
         bowlScores.Add(score);
         //determine pinSetter action by sending score to actionMaster
-        ActionMaster.Action action = actionMaster.Bowl(score);
+        ActionMaster.Action action = ActionMaster.NextAction(bowlScores);
         if (action == ActionMaster.Action.Tidy)
         {
             // reset ball
             ball.Reset();
             //set pinsetter to tidy
-            pinSetter.Tidy();
-            
+            pinSetter.Tidy();            
         }
         else if (action == ActionMaster.Action.Reset)
         {
@@ -37,7 +34,6 @@ public class GameManager : MonoBehaviour {
             pinSetter.Reset();
             //reset coiunt on pin counter
             pinCounter.ResetCount();
-
         }
         else if (action == ActionMaster.Action.EndTurn)
         {
