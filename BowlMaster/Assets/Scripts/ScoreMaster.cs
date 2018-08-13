@@ -13,18 +13,15 @@ public class ScoreMaster
         int firstBowl =0;
         int secondBowl = 0;
         int thirdBowl = 0;
-        int recovery = 0;
         bool again = true;
-        while (again)
+        while (bowlIndex + 1 < rolls.Count)
         {
             total = 0;
             firstBowl = rolls[bowlIndex];
             total += firstBowl;
             //detect strike
-            if (firstBowl == 10)
+            if (firstBowl == 10 && rolls.Count >= 3 + bowlIndex)
             {
-                if (rolls.Count >= 3 + bowlIndex)
-                {
                     secondBowl = rolls[bowlIndex + 1];
                     thirdBowl = rolls[bowlIndex + 2];
                     total += secondBowl;
@@ -32,70 +29,35 @@ public class ScoreMaster
                     frameList.Add(total);
                     frameIndex++;
                     bowlIndex += 1;
-                }
-                else { return frameList; }
             }
             //handle non strikes
-            else if (firstBowl < 10)
+            else if (firstBowl < 10 && rolls.Count >= 2 + bowlIndex)
             {
-                if (rolls.Count >= 2 + bowlIndex)
+                secondBowl = rolls[bowlIndex + 1];
+                total += secondBowl;
+                //detect spare
+                if (firstBowl + secondBowl == 10 && rolls.Count >= 3 + bowlIndex)
                 {
-                    secondBowl = rolls[bowlIndex + 1];
-                    total += secondBowl;
-                    //detect spare
-                    if (firstBowl + secondBowl == 10)
-                    {
-                        if (rolls.Count >= 3 + bowlIndex)
-                        {
-                            thirdBowl = rolls[bowlIndex + 2];
-                            total += thirdBowl;
-                            frameList.Add(total);
-                            frameIndex++;
-                            bowlIndex += 2;
-                        }
-                        else { return frameList; }
-                        
-                    }
-                    else
-                    {
-                        frameList.Add(total);
-                        frameIndex++;
-                        bowlIndex += 2;
-                    }
+                    thirdBowl = rolls[bowlIndex + 2];
+                    total += thirdBowl;
+                    frameList.Add(total);
+                    frameIndex++;
+                    bowlIndex += 2;
                 }
-                else { return frameList; }
-                      
-            }
-            else if(rolls.Count <=1 + bowlIndex)
-            {
-                return frameList;
-            }
-            // recovery and debuging
-            recovery++;
-            if (recovery > 100)
-            {
-                Debug.Log("recovery");
-                if(frameList.Count == 0)
+                else if (firstBowl + secondBowl < 10)
                 {
-                    Debug.Log("empty list");
+                    frameList.Add(total);
+                    frameIndex++;
+                    bowlIndex += 2;
                 }
-                else
-                {
-                    Debug.Log("test run");
-                }
-                foreach (int i in frameList)
-                {
-                    Debug.Log(i.ToString());
-                }
-                return frameList;
+                else { bowlIndex += 2; }                                      
             }
-            if(bowlIndex +1 >= rolls.Count)
-            {
-                again = false;
-            }
+            else { bowlIndex += 3; }
+            //if(bowlIndex +1 >= rolls.Count)
+            //{
+            //    again = false;
+            //}
         }
-
-
         //return list of framescores
         //debug readout to check values in list
         foreach (int i in frameList)
