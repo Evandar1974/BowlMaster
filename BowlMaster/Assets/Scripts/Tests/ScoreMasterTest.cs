@@ -3,6 +3,7 @@ using UnityEngine.TestTools;
 using System.Collections.Generic;
 using NUnit.Framework;
 using System.Collections;
+using System.Linq;
 
 public class ScoreMasterTest
 {

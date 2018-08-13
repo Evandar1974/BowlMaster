@@ -3,6 +3,8 @@ using UnityEngine.TestTools;
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+
 
 [TestFixture]
 public class ActionMasterTests
@@ -49,73 +51,43 @@ public class ActionMasterTests
     public void T04CheckResetAtStrikeInLastFrame()
     {
         int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,10 };
-        foreach (int roll in rolls)
-        {
-            pinDrops.Add(roll);
-        }
-        Assert.AreEqual(reset, ActionMaster.NextAction(pinDrops));
+        Assert.AreEqual(reset, ActionMaster.NextAction(rolls.ToList()));
     }
     [Test]
     public void T05CheckResetAtSpareInLastFrame()
     {
-        int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,9 };
-        foreach (int roll in rolls)
-        {
-            pinDrops.Add(roll);
-        }        
-        Assert.AreEqual(reset, ActionMaster.NextAction(pinDrops));
+        int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,9 };       
+        Assert.AreEqual(reset, ActionMaster.NextAction(rolls.ToList()));
     }
     [Test]
     public void T06RolsInEndGame()
     {
         int[] rolls = { 8, 2, 7, 3, 3, 4, 10, 2, 8, 10, 10, 8, 0, 10, 8, 2,9 };
-        foreach (int roll in rolls)
-        {
-            pinDrops.Add(roll);
-        }
-        Assert.AreEqual(endGame, ActionMaster.NextAction(pinDrops));
+        Assert.AreEqual(endGame, ActionMaster.NextAction(rolls.ToList()));
     }
     [Test]
     public void T07CheckEndgameAtLastFrame()
     {
-        int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,1 };
-        foreach (int roll in rolls)
-        {
-            pinDrops.Add(roll);
-        }
-        Assert.AreEqual(endGame, ActionMaster.NextAction(pinDrops));
+        int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,1,1 }; 
+        Assert.AreEqual(endGame, ActionMaster.NextAction(rolls.ToList()));
     }
     [Test]
     public void T08CheckTidyAtStrikeOn19InLastFrame()
     {
-        int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,10,5 };
-        foreach (int roll in rolls)
-        {
-            pinDrops.Add(roll);
-        }        
-        Assert.AreEqual(tidy, ActionMaster.NextAction(pinDrops));
+        int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,10,5 };              
+        Assert.AreEqual(tidy, ActionMaster.NextAction(rolls.ToList()));
     }
     [Test]
     public void T09CheckTidyAtgutterball20InLastFrame()
     {        
-        int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,10,0 };
-        foreach (int roll in rolls)
-        {
-            pinDrops.Add(roll);
-        }
-
-        Assert.AreEqual(tidy, ActionMaster.NextAction(pinDrops));
+        int[] rolls = { 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,10,0 };       
+        Assert.AreEqual(tidy, ActionMaster.NextAction(rolls.ToList()));
     }
     [Test]
     public void T10EndGameOnPerfectGame()
     {
-        int[] rolls = { 10,10,10,10,10,10,10,10,10,10,10,10 };
-        foreach (int roll in rolls)
-        {
-            pinDrops.Add(roll);
-        }
-
-        Assert.AreEqual(endGame, ActionMaster.NextAction(pinDrops));
+        int[] rolls = { 10,10,10,10,10,10,10,10,10,10,10,10 };  
+        Assert.AreEqual(endGame, ActionMaster.NextAction(rolls.ToList()));
     }
 
 }

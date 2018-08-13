@@ -4,22 +4,22 @@ using UnityEngine;
 
 
 
-public static class ActionMaster
+public class ActionMaster
 {
     public enum Action { Tidy, Reset, EndTurn, EndGame };
-    private static int[] bowls = new int[21];
-    private static int bowl = 1;
+    private int[] bowls = new int[21];
+    private int bowl = 1;
     public static Action NextAction(List<int> pinFalls)
     {
-        bowl = 1;
-        Action lastAction = Action.Tidy;
+        ActionMaster am = new ActionMaster();
+        Action lastAction = new Action();
         foreach(int pins in pinFalls)
         {
-            lastAction = Bowl(pins);
+            lastAction = am.Bowl(pins);
         }
         return lastAction;
     }
-    private static Action Bowl(int pins)
+    private Action Bowl(int pins)
     {
         
         if (pins > 10 || pins < 0)
@@ -77,12 +77,12 @@ public static class ActionMaster
 
         throw new UnityException("Not sure what to do");
     }
-    private static bool Bowl21Awarded()
+    private bool Bowl21Awarded()
     {
         return (bowls[19 - 1] + bowls[20 - 1] >= 10);
     }
 
-    private static bool AreAllPinsKnockedDown()
+    private bool AreAllPinsKnockedDown()
     {
         return ((bowls[19 - 1] + bowls[20 - 1]) % 10) == 0;
     }
