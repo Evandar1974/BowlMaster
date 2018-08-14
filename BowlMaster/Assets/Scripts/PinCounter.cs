@@ -7,7 +7,6 @@ public class PinCounter : MonoBehaviour {
     
     public int lastStandingCount;
     public Text standingDisplay;
-    
     private GameManager gameManager;
     private int lastBowlCount = 10;
     private float lastChangeTime;

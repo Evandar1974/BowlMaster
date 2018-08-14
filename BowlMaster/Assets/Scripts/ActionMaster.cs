@@ -6,9 +6,9 @@ using UnityEngine;
 
 public class ActionMaster
 {
-    public enum Action { Tidy, Reset, EndTurn, EndGame };
+    public  enum Action { Tidy, Reset, EndTurn, EndGame };
     private int[] bowls = new int[21];
-    private int bowl = 1;
+    private  int bowl = 1;
     public static Action NextAction(List<int> pinFalls)
     {
         ActionMaster am = new ActionMaster();

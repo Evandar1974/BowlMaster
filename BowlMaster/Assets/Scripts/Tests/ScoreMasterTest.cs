@@ -5,6 +5,7 @@ using NUnit.Framework;
 using System.Collections;
 using System.Linq;
 
+[TestFixture]
 public class ScoreMasterTest
 {
     private List<int> pinDrops;
