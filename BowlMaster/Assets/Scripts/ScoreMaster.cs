@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ScoreMaster
 {
-    public List<int> ScoreFrames(List<int> rolls)
+    public static List<int> ScoreFrames(List<int> rolls)
     {
         List<int> frameList = new List<int>();
         int bowlIndex = 0; 

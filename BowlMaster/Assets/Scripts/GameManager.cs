@@ -4,60 +4,28 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour {
     //create public refrences
-    public Ball ball;
-    public PinSetter pinSetter;
-    public PinCounter pinCounter;
+    private Ball ball;
+    private PinSetter pinSetter;
     public ScoreDisplay scoreDisplay;
-    private static ScoreMaster scoreMaster = new ScoreMaster();
+    
 
     private List<int> bowlScores = new List<int>();
     private List<int> frameScores = new List<int>();
-
+    private void Start()
+    {
+        pinSetter = GameObject.FindObjectOfType<PinSetter>();
+        ball = GameObject.FindObjectOfType<Ball>();
+    }
     public void BowlScore(int score)
     {
         //add score to players bowl scores list
         bowlScores.Add(score);
         //determine pinSetter action by sending score to actionMaster
         ActionMaster.Action action = ActionMaster.NextAction(bowlScores);
-        if (action == ActionMaster.Action.Tidy)
-        {
-            // reset ball
-            ball.Reset();
-            //set pinsetter to tidy
-            pinSetter.Tidy();            
-        }
-        else if (action == ActionMaster.Action.Reset)
-        {
-            //reset ball
-            ball.Reset();
-            //set pinsetter to reset
-            pinSetter.Reset();
-            //reset coiunt on pin counter
-            pinCounter.ResetCount();
-        }
-        else if (action == ActionMaster.Action.EndTurn)
-        {
-            //Reset Ball
-            ball.Reset();
-            //set pinsetter to reset
-            pinSetter.Reset();
-            //reset count on pincounter
-            pinCounter.ResetCount();
-        }
-        else if (action == ActionMaster.Action.EndGame)
-        {
-            //reset ball
-            ball.Reset();
-            //set pin setter to reset
-            pinSetter.Reset();
-        }
-        else
-        {
-            Debug.Log("shouldnt get here");
-        }
-
+        pinSetter.PerformAction(action);
+        ball.Reset();
         //pass bowl scores to scoreMaster to get Frame scores
-        frameScores = scoreMaster.ScoreFrames(bowlScores);
+        frameScores = ScoreMaster.ScoreFrames(bowlScores);
         //pass bowl and fram scores to scoreboard to display scores
         scoreDisplay.DisplayScores(bowlScores, frameScores);
 

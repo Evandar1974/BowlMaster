@@ -6,22 +6,46 @@ using UnityEngine.UI;
 public class PinSetter : MonoBehaviour
 {    
     public GameObject pinSet;
-
-    private Ball ball;
     private Animator animator;
-    
+    private PinCounter pinCounter;
+
     // Use this for initialization
     void Start ()
     {
-        animator = FindObjectOfType<Animator>();     
+        animator = FindObjectOfType<Animator>();
+        pinCounter = FindObjectOfType<PinCounter>();
 	}
-	
-    public void Tidy()
+	public void PerformAction(ActionMaster.Action action)
+    {
+        if (action == ActionMaster.Action.Tidy)
+        {         
+            Tidy();
+        }
+        else if (action == ActionMaster.Action.Reset)
+        {
+            Reset();
+            pinCounter.ResetCount();
+        }
+        else if (action == ActionMaster.Action.EndTurn)
+        {
+            Reset();
+            pinCounter.ResetCount();
+        }
+        else if (action == ActionMaster.Action.EndGame)
+        {
+            Reset();
+        }
+        else
+        {
+            Debug.Log("shouldnt get here");
+        }
+    }
+    private void Tidy()
     {
         animator.SetTrigger("Tidy");
     }
 
-    public void Reset()
+    private void Reset()
     {
         animator.SetTrigger("Reset");
     }
@@ -39,8 +63,7 @@ public class PinSetter : MonoBehaviour
     {
         foreach (Pin pin in GameObject.FindObjectsOfType<Pin>())
         {
-            pin.Lower();
-            pin.GetComponent<Rigidbody>().transform.rotation = Quaternion.Euler(270f, 0f, 0f);
+            pin.Lower();           
         }
     }
     
