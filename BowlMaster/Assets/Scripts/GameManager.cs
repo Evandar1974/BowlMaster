@@ -28,8 +28,16 @@ public class GameManager : MonoBehaviour {
         ball.Reset();
         //pass bowl scores to scoreMaster to get Frame scores
         frameScores = ScoreMaster.ScoreCumulative(bowlScores);
-        //pass bowl and fram scores to scoreboard to display scores
-        scoreDisplay.DisplayScores(bowlScores, frameScores);
+        foreach(int i in bowlScores)
+        {
+            Debug.Log(i.ToString());
+        }
+        foreach(int i in frameScores)
+        {
+            Debug.Log(i.ToString());
+        }     
+        scoreDisplay.DisplayScores(bowlScores);
+        scoreDisplay.FillFrames(frameScores);
 
     }
 }

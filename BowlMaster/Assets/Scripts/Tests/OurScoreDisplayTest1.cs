@@ -1,16 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-//using NUnit.Framework;
-//using UnityEngine;
-//using System.Linq;
-//
-//[TestFixture]
-//public class OurScoreDisplayTest {
-//	
-//	[Test]
-//	public void T00PassingTest () {
-//		Assert.AreEqual (1, 1);
-//	}
+using NUnit.Framework;
+using UnityEngine;
+using System.Linq;
+
+[TestFixture]
+public class OurScoreDisplayTest
+{
+
+    [Test]
+    public void T00PassingTest()
+    {
+        Assert.AreEqual(1, 1);
+    }
 //
 //	[Test]
 //	public void T01Bowl1 () {
@@ -94,4 +96,4 @@ using System.Collections.Generic;
 //		Assert.AreEqual (rollsString, ScoreDisplay.FormatRolls(rolls.ToList()));
 //	}
 //
-//}
+}
