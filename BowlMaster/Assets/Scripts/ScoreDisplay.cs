@@ -37,7 +37,7 @@ public class ScoreDisplay : MonoBehaviour
                     output += " ";
                 }
             }
-            else if(output.Length % 2 == 1 && rolls[i] + rolls[i-1] == 10)
+            else if((output.Length % 2 == 1 || output.Length == 21) && rolls[i] + rolls[i-1] == 10)
             {
                 output += "/";
             }
